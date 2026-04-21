@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"C:/Users/uriga/OneDrive/Escritorio/AGENCIA_RECORDS/MIS_PROYECTOS/Badcat3/src/components\")",
+      "Bash(mkdir -p \"C:/Users/uriga/OneDrive/Escritorio/AGENCIA_RECORDS/MIS_PROYECTOS/Badcat3/public\")",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "WebFetch(domain:www.badcat.es)",
+      "WebFetch(domain:badcat.es)",
+      "WebFetch(domain:www.badcat.com)",
+      "Bash(curl *)"
+    ]
+  }
+}
