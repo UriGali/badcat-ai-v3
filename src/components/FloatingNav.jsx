@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { theme } from '../themeConfig';
 
 export default function FloatingNav() {
@@ -42,50 +43,63 @@ export default function FloatingNav() {
         }}
       >
         {/* Logo */}
-        <motion.a
-          href="#"
-          style={{
-            fontFamily: '"Bebas Neue", cursive',
-            fontSize: '1.8rem',
-            letterSpacing: '0.15em',
-            color: '#FFB400',
-            textDecoration: 'none',
-            display: 'flex',
-            alignItems: 'baseline',
-            gap: '0.2em',
-          }}
+        <motion.div
           whileHover={{ letterSpacing: '0.22em', color: '#F5F5F5' }}
           transition={{ duration: 0.25 }}
         >
-          {theme.brand.name}
-          {theme.brand.aiSuffix && (
-            <span style={{ fontSize: '1.1rem', letterSpacing: '0.06em', fontWeight: 300 }}>
-              {theme.brand.aiSuffix}
-            </span>
-          )}
-        </motion.a>
+          <Link
+            to="/"
+            style={{
+              fontFamily: '"Bebas Neue", cursive',
+              fontSize: '1.8rem',
+              letterSpacing: '0.15em',
+              color: '#FFB400',
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'baseline',
+              gap: '0.2em',
+            }}
+          >
+            {theme.brand.name}
+            {theme.brand.aiSuffix && (
+              <span style={{ fontSize: '1.1rem', letterSpacing: '0.06em', fontWeight: 300 }}>
+                {theme.brand.aiSuffix}
+              </span>
+            )}
+          </Link>
+        </motion.div>
 
         {/* Links + CTA */}
         <div className="nav-links">
-          {theme.nav.links.map((link) => (
-            <motion.a
-              key={link.label}
-              href={link.href}
-              className="nav-link-label"
-              style={{
-                fontFamily: '"Space Grotesk", sans-serif',
-                fontSize: '0.78rem',
-                letterSpacing: '0.22em',
-                color: 'rgba(245,245,245,0.55)',
-                textDecoration: 'none',
-                textTransform: 'uppercase',
-              }}
-              whileHover={{ color: '#F5F5F5' }}
-              transition={{ duration: 0.18 }}
-            >
-              {link.label}
-            </motion.a>
-          ))}
+          {theme.nav.links.map((link) => {
+            const isInternal = link.href.startsWith('/');
+            const linkStyle = {
+              fontFamily: '"Space Grotesk", sans-serif',
+              fontSize: '0.78rem',
+              letterSpacing: '0.22em',
+              color: 'rgba(245,245,245,0.55)',
+              textDecoration: 'none',
+              textTransform: 'uppercase',
+            };
+            return isInternal ? (
+              <motion.div key={link.label} whileHover={{ color: '#F5F5F5' }} transition={{ duration: 0.18 }}>
+                <Link to={link.href} className="nav-link-label" style={linkStyle}>
+                  {link.label}
+                </Link>
+              </motion.div>
+            ) : (
+              <motion.a
+                key={link.label}
+                href={link.href}
+                className="nav-link-label"
+                style={linkStyle}
+                whileHover={{ color: '#F5F5F5' }}
+                transition={{ duration: 0.18 }}
+              >
+                {link.label}
+              </motion.a>
+            );
+          })}
 
           <motion.a
             href="#contact"

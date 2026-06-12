@@ -1,15 +1,14 @@
-import FloatingNav from './components/FloatingNav';
-import VideoWall from './components/VideoWall';
-import ClientCarousel from './components/ClientCarousel';
-import Footer from './components/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Proyectos from './pages/Proyectos';
 
 export default function App() {
   return (
-    <div style={{ backgroundColor: '#111111', minHeight: '100vh' }}>
-      <FloatingNav />
-      <VideoWall />
-      <ClientCarousel />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/proyectos" element={<Proyectos />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
