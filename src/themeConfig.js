@@ -285,17 +285,14 @@ export const theme = {
 
   // ── Contacto ─────────────────────────────────────────────
   contact: {
-    email: 'hola@badcat.es',
-    phone: '+34 612 345 678',
-    location: 'Madrid, España',
+    email: 'badcat@badcat.cat',
+    location: 'Barcelona, España',
   },
 
   // ── Footer ───────────────────────────────────────────────
   footer: {
     social: [
-      { label: 'Instagram', href: '#' },
-      { label: 'Vimeo',     href: '#' },
-      { label: 'LinkedIn',  href: '#' },
+      { label: 'Instagram', href: 'https://www.instagram.com/badcat.production/' },
     ],
     legalLinks: [
       { label: 'Política de Privacidad', href: '#' },

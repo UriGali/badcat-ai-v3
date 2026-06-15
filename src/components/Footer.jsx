@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Instagram } from 'lucide-react';
 import { theme } from '../themeConfig';
 
 const DOT_BG = {
@@ -116,7 +117,7 @@ export default function Footer() {
                 marginBottom: '1rem',
               }}
             >
-              Madrid<br />España
+              Barcelona<br />España
             </p>
             <p
               style={{
@@ -126,8 +127,6 @@ export default function Footer() {
                 lineHeight: 1.7,
               }}
             >
-              {theme.contact.phone}
-              <br />
               Available worldwide
             </p>
           </BentoBox>
@@ -153,22 +152,7 @@ export default function Footer() {
                   whileHover={{ color: '#F5F5F5', x: 4 }}
                   transition={{ duration: 0.18 }}
                 >
-                  <span
-                    style={{
-                      fontSize: '0.6rem',
-                      opacity: 0.4,
-                      border: '1px solid currentColor',
-                      borderRadius: '50%',
-                      width: '1.4em',
-                      height: '1.4em',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0,
-                    }}
-                  >
-                    ↗
-                  </span>
+                  <Instagram size={15} strokeWidth={1.5} style={{ flexShrink: 0, opacity: 0.55 }} />
                   {s.label}
                 </motion.a>
               ))}
