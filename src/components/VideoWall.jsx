@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { theme } from '../themeConfig';
 import VideoCard from './VideoCard';
 import ProjectModal from './ProjectModal';
 
 function CategorySection({ category, globalIndex, onSelect }) {
+  const { t } = useTranslation();
+
   return (
     <div style={{ marginBottom: '6rem' }}>
       {/* Category header */}
@@ -58,7 +61,7 @@ function CategorySection({ category, globalIndex, onSelect }) {
             textTransform: 'uppercase',
           }}
         >
-          {category.projects.length} {category.projects.length === 1 ? 'proyecto' : 'proyectos'}
+          {t('work.projectCount', { count: category.projects.length })}
         </span>
       </motion.div>
 
@@ -88,6 +91,7 @@ function CategorySection({ category, globalIndex, onSelect }) {
 }
 
 export default function VideoWall() {
+  const { t } = useTranslation();
   const [selected, setSelected] = useState(null);
 
   return (
@@ -119,7 +123,7 @@ export default function VideoWall() {
               marginBottom: '0.6rem',
             }}
           >
-            Selected Work
+            {t('work.label')}
           </p>
           <h1
             className="glitch-title"
@@ -145,7 +149,7 @@ export default function VideoWall() {
             lineHeight: 1.65,
           }}
         >
-          {theme.brand.subTagline}
+          {t('work.subtitle')}
         </p>
       </motion.div>
 

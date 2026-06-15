@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { theme } from '../themeConfig';
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section
       style={{
@@ -30,7 +33,7 @@ export default function Hero() {
             marginBottom: '1.2rem',
           }}
         >
-          Madrid, España
+          {t('hero.location')}
         </p>
 
         <h1
@@ -57,7 +60,7 @@ export default function Hero() {
             marginBottom: '3rem',
           }}
         >
-          {theme.brand.subTagline}
+          {t('hero.subTagline')}
         </p>
 
         <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
@@ -77,7 +80,7 @@ export default function Hero() {
                 display: 'inline-block',
               }}
             >
-              Ver Proyectos
+              {t('hero.viewProjects')}
             </Link>
           </motion.div>
 
@@ -97,7 +100,7 @@ export default function Hero() {
               borderBottom: '1px solid rgba(245,245,245,0.15)',
             }}
           >
-            Start a Project
+            {t('hero.startProject')}
           </motion.a>
         </div>
       </motion.div>

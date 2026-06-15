@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Play } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function ProjectModal({ project, onClose }) {
+  const { t } = useTranslation();
+
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
     window.addEventListener('keydown', onKey);
@@ -16,11 +19,11 @@ export default function ProjectModal({ project, onClose }) {
   if (!project) return null;
 
   const credits = [
-    { label: 'Director',   value: project.director },
-    { label: 'D.O.P.',     value: project.dop },
-    { label: 'Agencia',    value: project.agency },
-    { label: 'Categoría',  value: project.category },
-    { label: 'Año',        value: project.year },
+    { label: t('modal.director'),  value: project.director },
+    { label: t('modal.dop'),       value: project.dop },
+    { label: t('modal.agency'),    value: project.agency },
+    { label: t('modal.category'),  value: project.category },
+    { label: t('modal.year'),      value: project.year },
   ];
 
   return (
@@ -92,7 +95,7 @@ export default function ProjectModal({ project, onClose }) {
           ) : (
             <>
               <img
-                src={project.poster || project.thumbnail}
+                src={project.poster}
                 alt={project.title}
                 style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }}
               />
@@ -122,19 +125,6 @@ export default function ProjectModal({ project, onClose }) {
                 >
                   <Play size={26} fill="#F5F5F5" color="#F5F5F5" style={{ marginLeft: 4 }} />
                 </motion.div>
-                <p
-                  style={{
-                    fontFamily: '"Space Grotesk", sans-serif',
-                    fontSize: '0.7rem',
-                    letterSpacing: '0.25em',
-                    color: 'rgba(245,245,245,0.35)',
-                    textTransform: 'uppercase',
-                    textAlign: 'center',
-                    maxWidth: 220,
-                  }}
-                >
-                  Añade fullVideo en themeConfig.js
-                </p>
               </div>
             </>
           )}
@@ -157,7 +147,6 @@ export default function ProjectModal({ project, onClose }) {
           transition={{ delay: 0.15, duration: 0.45, ease: 'easeOut' }}
         >
           <div>
-            {/* Categoria + año */}
             <p
               style={{
                 fontFamily: '"Space Grotesk", sans-serif',
@@ -171,7 +160,6 @@ export default function ProjectModal({ project, onClose }) {
               {project.category} · {project.year}
             </p>
 
-            {/* Brand */}
             <h2
               className="modal-tech-brand"
               style={{
@@ -186,7 +174,6 @@ export default function ProjectModal({ project, onClose }) {
               {project.brand}
             </h2>
 
-            {/* Title */}
             <p
               style={{
                 fontFamily: '"Space Grotesk", sans-serif',
@@ -199,7 +186,6 @@ export default function ProjectModal({ project, onClose }) {
               {project.title}
             </p>
 
-            {/* Description */}
             <p
               style={{
                 fontFamily: '"Inter", sans-serif',
@@ -212,7 +198,6 @@ export default function ProjectModal({ project, onClose }) {
               {project.description}
             </p>
 
-            {/* Amber divider */}
             <div
               style={{
                 width: '2rem',
@@ -222,7 +207,6 @@ export default function ProjectModal({ project, onClose }) {
               }}
             />
 
-            {/* Credits */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
               {credits.map(({ label, value }) => (
                 <div key={label}>
@@ -253,7 +237,6 @@ export default function ProjectModal({ project, onClose }) {
             </div>
           </div>
 
-          {/* Footer del modal */}
           <div>
             <div
               style={{

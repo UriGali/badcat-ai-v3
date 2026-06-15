@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "projects": "Projects",
+    "clients": "Clients",
+    "contact": "Contact",
+    "cta": "Start a Project"
+  },
+  "hero": {
+    "location": "Barcelona, Spain",
+    "subTagline": "Cinematographic Production · Artificial Intelligence · Barcelona, Spain",
+    "viewProjects": "View Projects",
+    "startProject": "Start a Project"
+  },
+  "work": {
+    "label": "Selected Work",
+    "subtitle": "Cinematographic Production · AI · Barcelona",
+    "projectCount_one": "{{count}} project",
+    "projectCount_other": "{{count}} projects"
+  },
+  "footer": {
+    "newProject": "New Project",
+    "headingLine1": "Let's Work",
+    "headingLine2": "Together",
+    "locationLabel": "Location",
+    "locationCity": "Barcelona",
+    "locationCountry": "Spain",
+    "available": "Available worldwide",
+    "follow": "Follow",
+    "copyright": "© {{year}} Badcat Production House",
+    "rights": "All rights reserved."
+  },
+  "modal": {
+    "director": "Director",
+    "dop": "D.O.P.",
+    "agency": "Agency",
+    "category": "Category",
+    "year": "Year"
+  },
+  "legal": {
+    "privacy": "Privacy Policy",
+    "notice": "Legal Notice"
+  }
+}

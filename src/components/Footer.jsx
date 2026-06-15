@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Instagram } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { theme } from '../themeConfig';
 
 const DOT_BG = {
@@ -37,6 +38,8 @@ function BentoBox({ children, style, delay = 0, className = '' }) {
 }
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer
       id="contact"
@@ -57,9 +60,8 @@ export default function Footer() {
               flexDirection: 'column',
             }}
           >
-            {/* Heading — stays at top */}
             <div>
-              <p style={LABEL}>New Project</p>
+              <p style={LABEL}>{t('footer.newProject')}</p>
               <h2
                 style={{
                   fontFamily: '"Bebas Neue", cursive',
@@ -69,11 +71,10 @@ export default function Footer() {
                   letterSpacing: '0.02em',
                 }}
               >
-                Let's Work<br />Together
+                {t('footer.headingLine1')}<br />{t('footer.headingLine2')}
               </h2>
             </div>
 
-            {/* Email — breathes in the center */}
             <div
               style={{
                 flex: 1,
@@ -106,7 +107,7 @@ export default function Footer() {
 
           {/* Box 2 — Location */}
           <BentoBox delay={0.1} className="bento-location">
-            <p style={LABEL}>Location</p>
+            <p style={LABEL}>{t('footer.locationLabel')}</p>
             <p
               style={{
                 fontFamily: '"Bebas Neue", cursive',
@@ -117,7 +118,7 @@ export default function Footer() {
                 marginBottom: '1rem',
               }}
             >
-              Barcelona<br />España
+              {t('footer.locationCity')}<br />{t('footer.locationCountry')}
             </p>
             <p
               style={{
@@ -127,18 +128,20 @@ export default function Footer() {
                 lineHeight: 1.7,
               }}
             >
-              Available worldwide
+              {t('footer.available')}
             </p>
           </BentoBox>
 
           {/* Box 3 — Social */}
           <BentoBox delay={0.15} className="bento-social">
-            <p style={LABEL}>Follow</p>
+            <p style={LABEL}>{t('footer.follow')}</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
               {theme.footer.social.map((s) => (
                 <motion.a
                   key={s.label}
                   href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     fontFamily: '"Space Grotesk", sans-serif',
                     fontSize: '0.88rem',
@@ -193,9 +196,9 @@ export default function Footer() {
                 lineHeight: 1.8,
               }}
             >
-              © {new Date().getFullYear()} Badcat Production House
+              {t('footer.copyright', { year: new Date().getFullYear() })}
               <br />
-              All rights reserved.
+              {t('footer.rights')}
             </p>
           </BentoBox>
 
@@ -212,7 +215,7 @@ export default function Footer() {
         >
           {theme.footer.legalLinks.map((l) => (
             <a
-              key={l.label}
+              key={l.key}
               href={l.href}
               style={{
                 fontFamily: '"Space Grotesk", sans-serif',
@@ -222,7 +225,7 @@ export default function Footer() {
                 letterSpacing: '0.08em',
               }}
             >
-              {l.label}
+              {t(`legal.${l.key}`)}
             </a>
           ))}
         </div>

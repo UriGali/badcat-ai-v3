@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "framer-motion": "^12.38.0",
+    "i18next": "^26.3.1",
     "lucide-react": "^0.400.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-i18next": "^17.0.8",
     "react-router-dom": "^7.17.0"
   },
   "devDependencies": {

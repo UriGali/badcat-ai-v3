@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { theme } from '../themeConfig';
 
+const LANGS = ['ca', 'es', 'en'];
+
 export default function FloatingNav() {
+  const { t, i18n } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -11,6 +15,15 @@ export default function FloatingNav() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  const linkStyle = {
+    fontFamily: '"Space Grotesk", sans-serif',
+    fontSize: '0.78rem',
+    letterSpacing: '0.22em',
+    color: 'rgba(245,245,245,0.55)',
+    textDecoration: 'none',
+    textTransform: 'uppercase',
+  };
 
   return (
     <motion.nav
@@ -69,37 +82,63 @@ export default function FloatingNav() {
           </Link>
         </motion.div>
 
-        {/* Links + CTA */}
+        {/* Links + Lang selector + CTA */}
         <div className="nav-links">
           {theme.nav.links.map((link) => {
             const isInternal = link.href.startsWith('/');
-            const linkStyle = {
-              fontFamily: '"Space Grotesk", sans-serif',
-              fontSize: '0.78rem',
-              letterSpacing: '0.22em',
-              color: 'rgba(245,245,245,0.55)',
-              textDecoration: 'none',
-              textTransform: 'uppercase',
-            };
             return isInternal ? (
-              <motion.div key={link.label} whileHover={{ color: '#F5F5F5' }} transition={{ duration: 0.18 }}>
+              <motion.div key={link.key} whileHover={{ color: '#F5F5F5' }} transition={{ duration: 0.18 }}>
                 <Link to={link.href} className="nav-link-label" style={linkStyle}>
-                  {link.label}
+                  {t(`nav.${link.key}`)}
                 </Link>
               </motion.div>
             ) : (
               <motion.a
-                key={link.label}
+                key={link.key}
                 href={link.href}
                 className="nav-link-label"
                 style={linkStyle}
                 whileHover={{ color: '#F5F5F5' }}
                 transition={{ duration: 0.18 }}
               >
-                {link.label}
+                {t(`nav.${link.key}`)}
               </motion.a>
             );
           })}
+
+          {/* Language selector */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0',
+              borderLeft: '1px solid rgba(245,245,245,0.12)',
+              paddingLeft: '1rem',
+              marginLeft: '0.2rem',
+            }}
+          >
+            {LANGS.map((code) => (
+              <button
+                key={code}
+                onClick={() => i18n.changeLanguage(code)}
+                style={{
+                  fontFamily: '"Space Grotesk", sans-serif',
+                  fontSize: '0.68rem',
+                  letterSpacing: '0.16em',
+                  color: i18n.language === code ? '#FFB400' : 'rgba(245,245,245,0.28)',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: '0.25rem 0.45rem',
+                  textTransform: 'uppercase',
+                  transition: 'color 0.18s ease',
+                  lineHeight: 1,
+                }}
+              >
+                {code.toUpperCase()}
+              </button>
+            ))}
+          </div>
 
           <motion.a
             href="#contact"
@@ -121,7 +160,7 @@ export default function FloatingNav() {
             whileTap={{ scale: 0.97 }}
             transition={{ duration: 0.18 }}
           >
-            Start a Project
+            {t('nav.cta')}
           </motion.a>
         </div>
       </div>

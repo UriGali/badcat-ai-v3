@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "projects": "Projectes",
+    "clients": "Clients",
+    "contact": "Contacte",
+    "cta": "Iniciar Projecte"
+  },
+  "hero": {
+    "location": "Barcelona, Espanya",
+    "subTagline": "Producció Cinematogràfica · Intel·ligència Artificial · Barcelona, Espanya",
+    "viewProjects": "Veure Projectes",
+    "startProject": "Iniciar Projecte"
+  },
+  "work": {
+    "label": "Treball Seleccionat",
+    "subtitle": "Producció Cinematogràfica · IA · Barcelona",
+    "projectCount_one": "{{count}} projecte",
+    "projectCount_other": "{{count}} projectes"
+  },
+  "footer": {
+    "newProject": "Nou Projecte",
+    "headingLine1": "Treballem",
+    "headingLine2": "Junts",
+    "locationLabel": "Localització",
+    "locationCity": "Barcelona",
+    "locationCountry": "Espanya",
+    "available": "Disponibles a tot el món",
+    "follow": "Segueix-nos",
+    "copyright": "© {{year}} Badcat Production House",
+    "rights": "Tots els drets reservats."
+  },
+  "modal": {
+    "director": "Director",
+    "dop": "D.O.P.",
+    "agency": "Agència",
+    "category": "Categoria",
+    "year": "Any"
+  },
+  "legal": {
+    "privacy": "Política de Privacitat",
+    "notice": "Avís Legal"
+  }
+}

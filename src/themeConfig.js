@@ -27,9 +27,9 @@ export const theme = {
   // ── Navegación ───────────────────────────────────────────
   nav: {
     links: [
-      { label: 'Proyectos', href: '/proyectos' },
-      { label: 'Clients',   href: '#clients' },
-      { label: 'Contact',   href: '#contact' },
+      { key: 'projects', href: '/proyectos' },
+      { key: 'clients',  href: '#clients' },
+      { key: 'contact',  href: '#contact' },
     ],
   },
 
@@ -295,8 +295,8 @@ export const theme = {
       { label: 'Instagram', href: 'https://www.instagram.com/badcat.production/' },
     ],
     legalLinks: [
-      { label: 'Política de Privacidad', href: '#' },
-      { label: 'Aviso Legal',            href: '#' },
+      { key: 'privacy', href: '#' },
+      { key: 'notice',  href: '#' },
     ],
   },
 };
