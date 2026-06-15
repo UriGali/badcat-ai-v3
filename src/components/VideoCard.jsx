@@ -18,7 +18,7 @@ export default function VideoCard({ project, index, onClick }) {
 
   const handleMouseEnter = () => {
     setIsHovered(true);
-    if (videoRef.current) {
+    if (videoRef.current && project.hoverVideo) {
       videoRef.current.play().catch(() => {});
     }
   };
@@ -49,14 +49,10 @@ export default function VideoCard({ project, index, onClick }) {
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.55, delay: Math.min(index * 0.04, 0.45) }}
     >
-      {/* Video — preload="metadata" muestra el primer fotograma como miniatura */}
-      <motion.video
-        ref={videoRef}
-        src={project.hoverVideo}
-        muted
-        loop
-        playsInline
-        preload="metadata"
+      {/* Thumbnail — uses real poster, falls back to placeholder */}
+      <motion.img
+        src={project.poster || project.thumbnail}
+        alt={project.title}
         style={{
           width: '100%',
           height: '100%',
@@ -66,6 +62,28 @@ export default function VideoCard({ project, index, onClick }) {
         animate={{ scale: isHovered ? 1.06 : 1 }}
         transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
       />
+
+      {/* Hover video — poster shown until playback starts */}
+      {project.hoverVideo && (
+        <video
+          ref={videoRef}
+          src={project.hoverVideo}
+          poster={project.poster}
+          muted
+          loop
+          playsInline
+          preload="none"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: isHovered ? 1 : 0,
+            transition: 'opacity 0.5s ease',
+          }}
+        />
+      )}
 
       {/* Permanent subtle gradient at bottom */}
       <div
